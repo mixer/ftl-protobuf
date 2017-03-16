@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package Beam.Ftl.Ingest.Messages.Connection;
+
+enum ProtocolVersion {
+    V0 = 0;
+    V1 = 1;
+}
+
+enum StatusCodes {
+    SUCCESS = 0;
+    FAILED = 1;
+}
+
+message Connect {
+  ProtocolVersion ClientProtocolVersion = 1;
+}
+
+message Connect_Response {
+  ProtocolVersion ServerProtocolVersion = 1;
+  StatusCodes StatusCode = 2;
+  string HmacKey = 3;
+}
