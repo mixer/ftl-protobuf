@@ -129,27 +129,6 @@ inline bool StatusCodes_Parse(
   return ::google::protobuf::internal::ParseNamedEnum<StatusCodes>(
     StatusCodes_descriptor(), name, value);
 }
-enum CommandType {
-  CONNECT = 0,
-  CONNECT_RESPONSE = 1,
-  CommandType_INT_MIN_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32min,
-  CommandType_INT_MAX_SENTINEL_DO_NOT_USE_ = ::google::protobuf::kint32max
-};
-bool CommandType_IsValid(int value);
-const CommandType CommandType_MIN = CONNECT;
-const CommandType CommandType_MAX = CONNECT_RESPONSE;
-const int CommandType_ARRAYSIZE = CommandType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* CommandType_descriptor();
-inline const ::std::string& CommandType_Name(CommandType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    CommandType_descriptor(), value);
-}
-inline bool CommandType_Parse(
-    const ::std::string& name, CommandType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<CommandType>(
-    CommandType_descriptor(), name, value);
-}
 // ===================================================================
 
 class IngestMessage : public ::google::protobuf::Message /* @@protoc_insertion_point(class_definition:Beam.Ftl.Ingest.Messages.Connection.IngestMessage) */ {
@@ -219,10 +198,10 @@ class IngestMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
 
   // accessors -------------------------------------------------------
 
-  // .google.protobuf.Any Command = 3;
+  // .google.protobuf.Any Command = 15;
   bool has_command() const;
   void clear_command();
-  static const int kCommandFieldNumber = 3;
+  static const int kCommandFieldNumber = 15;
   const ::google::protobuf::Any& command() const;
   ::google::protobuf::Any* mutable_command();
   ::google::protobuf::Any* release_command();
@@ -234,19 +213,12 @@ class IngestMessage : public ::google::protobuf::Message /* @@protoc_insertion_p
   ::Beam::Ftl::Ingest::Messages::Connection::StatusCodes statuscode() const;
   void set_statuscode(::Beam::Ftl::Ingest::Messages::Connection::StatusCodes value);
 
-  // .Beam.Ftl.Ingest.Messages.Connection.CommandType CommandType = 2;
-  void clear_commandtype();
-  static const int kCommandTypeFieldNumber = 2;
-  ::Beam::Ftl::Ingest::Messages::Connection::CommandType commandtype() const;
-  void set_commandtype(::Beam::Ftl::Ingest::Messages::Connection::CommandType value);
-
   // @@protoc_insertion_point(class_scope:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::Any* command_;
   int statuscode_;
-  int commandtype_;
   mutable int _cached_size_;
   friend struct  protobuf_IngestConnection_2eproto::TableStruct;
 };
@@ -460,21 +432,7 @@ inline void IngestMessage::set_statuscode(::Beam::Ftl::Ingest::Messages::Connect
   // @@protoc_insertion_point(field_set:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.StatusCode)
 }
 
-// .Beam.Ftl.Ingest.Messages.Connection.CommandType CommandType = 2;
-inline void IngestMessage::clear_commandtype() {
-  commandtype_ = 0;
-}
-inline ::Beam::Ftl::Ingest::Messages::Connection::CommandType IngestMessage::commandtype() const {
-  // @@protoc_insertion_point(field_get:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.CommandType)
-  return static_cast< ::Beam::Ftl::Ingest::Messages::Connection::CommandType >(commandtype_);
-}
-inline void IngestMessage::set_commandtype(::Beam::Ftl::Ingest::Messages::Connection::CommandType value) {
-  
-  commandtype_ = value;
-  // @@protoc_insertion_point(field_set:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.CommandType)
-}
-
-// .google.protobuf.Any Command = 3;
+// .google.protobuf.Any Command = 15;
 inline bool IngestMessage::has_command() const {
   return this != internal_default_instance() && command_ != NULL;
 }
@@ -643,11 +601,6 @@ template <> struct is_proto_enum< ::Beam::Ftl::Ingest::Messages::Connection::Sta
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::Beam::Ftl::Ingest::Messages::Connection::StatusCodes>() {
   return ::Beam::Ftl::Ingest::Messages::Connection::StatusCodes_descriptor();
-}
-template <> struct is_proto_enum< ::Beam::Ftl::Ingest::Messages::Connection::CommandType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::Beam::Ftl::Ingest::Messages::Connection::CommandType>() {
-  return ::Beam::Ftl::Ingest::Messages::Connection::CommandType_descriptor();
 }
 
 }  // namespace protobuf

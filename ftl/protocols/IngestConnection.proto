@@ -26,16 +26,10 @@ enum StatusCodes {
   INTERNAL_COMMAND_ERROR = 501;
 }
 
-enum CommandType {
-  CONNECT = 0;
-  CONNECT_RESPONSE = 1;
-}
-
 message IngestMessage
 {
   StatusCodes StatusCode = 1;
-  CommandType CommandType = 2;
-  google.protobuf.Any Command = 3;
+  google.protobuf.Any Command = 15;
 }
 
 message Connect {
