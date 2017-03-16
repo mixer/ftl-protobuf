@@ -1,15 +1,41 @@
 syntax = "proto3";
 
+import "google/protobuf/any.proto";
+
 package Beam.Ftl.Ingest.Messages.Connection;
 
 enum ProtocolVersion {
-    V0 = 0;
-    V1 = 1;
+  V0 = 0;
+  V1 = 1;
 }
 
 enum StatusCodes {
-    SUCCESS = 0;
-    FAILED = 1;
+  UNKNOWN = 0;
+  OK = 200;
+  PING = 201;
+  BAD_REQUEST = 400;
+  UNAUTHORIZED = 401;
+  OLD_VERSION = 402;
+  AUDIO_SSRC_COLLISION = 403;
+  VIDEO_SSRC_COLLISION = 404;
+  INVALID_STREAM_KEY = 405;
+  CHANNEL_IN_USE = 406;
+  REGION_UNSUPPORTED = 407;
+  NO_MEDIA_TIMEOUT = 408;
+  INTERNAL_SERVER_ERROR = 500;
+  INTERNAL_COMMAND_ERROR = 501;
+}
+
+enum CommandType {
+  CONNECT = 0;
+  CONNECT_RESPONSE = 1;
+}
+
+message IngestMessage
+{
+  StatusCodes StatusCode = 1;
+  CommandType CommandType = 2;
+  google.protobuf.Any Command = 3;
 }
 
 message Connect {

@@ -22,6 +22,8 @@ namespace Ftl {
 namespace Ingest {
 namespace Messages {
 namespace Connection {
+class IngestMessageDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<IngestMessage> {
+} _IngestMessage_default_instance_;
 class ConnectDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Connect> {
 } _Connect_default_instance_;
 class Connect_ResponseDefaultTypeInternal : public ::google::protobuf::internal::ExplicitlyConstructed<Connect_Response> {
@@ -32,12 +34,19 @@ namespace protobuf_IngestConnection_2eproto {
 
 namespace {
 
-::google::protobuf::Metadata file_level_metadata[2];
-const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[2];
+::google::protobuf::Metadata file_level_metadata[3];
+const ::google::protobuf::EnumDescriptor* file_level_enum_descriptors[3];
 
 }  // namespace
 
 const ::google::protobuf::uint32 TableStruct::offsets[] = {
+  ~0u,  // no _has_bits_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IngestMessage, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IngestMessage, statuscode_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IngestMessage, commandtype_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(IngestMessage, command_),
   ~0u,  // no _has_bits_
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(Connect, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -53,11 +62,13 @@ const ::google::protobuf::uint32 TableStruct::offsets[] = {
 };
 
 static const ::google::protobuf::internal::MigrationSchema schemas[] = {
-  { 0, -1, sizeof(Connect)},
-  { 5, -1, sizeof(Connect_Response)},
+  { 0, -1, sizeof(IngestMessage)},
+  { 7, -1, sizeof(Connect)},
+  { 12, -1, sizeof(Connect_Response)},
 };
 
 static ::google::protobuf::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::google::protobuf::Message*>(&_IngestMessage_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_Connect_default_instance_),
   reinterpret_cast<const ::google::protobuf::Message*>(&_Connect_Response_default_instance_),
 };
@@ -80,24 +91,30 @@ void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) GOOGLE_ATTRIBUTE_COLD;
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 2);
+  ::google::protobuf::internal::RegisterAllTypes(file_level_metadata, 3);
 }
 
 }  // namespace
 
 void TableStruct::Shutdown() {
-  _Connect_default_instance_.Shutdown();
+  _IngestMessage_default_instance_.Shutdown();
   delete file_level_metadata[0].reflection;
-  _Connect_Response_default_instance_.Shutdown();
+  _Connect_default_instance_.Shutdown();
   delete file_level_metadata[1].reflection;
+  _Connect_Response_default_instance_.Shutdown();
+  delete file_level_metadata[2].reflection;
 }
 
 void TableStruct::InitDefaultsImpl() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::internal::InitProtobufDefaults();
+  ::google::protobuf::protobuf_google_2fprotobuf_2fany_2eproto::InitDefaults();
+  _IngestMessage_default_instance_.DefaultConstruct();
   _Connect_default_instance_.DefaultConstruct();
   _Connect_Response_default_instance_.DefaultConstruct();
+  _IngestMessage_default_instance_.get_mutable()->command_ = const_cast< ::google::protobuf::Any*>(
+      ::google::protobuf::Any::internal_default_instance());
 }
 
 void InitDefaults() {
@@ -108,21 +125,36 @@ void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] = {
       "\n\026IngestConnection.proto\022#Beam.Ftl.Inges"
-      "t.Messages.Connection\"^\n\007Connect\022S\n\025Clie"
-      "ntProtocolVersion\030\001 \001(\01624.Beam.Ftl.Inges"
-      "t.Messages.Connection.ProtocolVersion\"\276\001"
-      "\n\020Connect_Response\022S\n\025ServerProtocolVers"
-      "ion\030\001 \001(\01624.Beam.Ftl.Ingest.Messages.Con"
-      "nection.ProtocolVersion\022D\n\nStatusCode\030\002 "
-      "\001(\01620.Beam.Ftl.Ingest.Messages.Connectio"
-      "n.StatusCodes\022\017\n\007HmacKey\030\003 \001(\t*!\n\017Protoc"
-      "olVersion\022\006\n\002V0\020\000\022\006\n\002V1\020\001*&\n\013StatusCodes"
-      "\022\013\n\007SUCCESS\020\000\022\n\n\006FAILED\020\001b\006proto3"
+      "t.Messages.Connection\032\031google/protobuf/a"
+      "ny.proto\"\303\001\n\rIngestMessage\022D\n\nStatusCode"
+      "\030\001 \001(\01620.Beam.Ftl.Ingest.Messages.Connec"
+      "tion.StatusCodes\022E\n\013CommandType\030\002 \001(\01620."
+      "Beam.Ftl.Ingest.Messages.Connection.Comm"
+      "andType\022%\n\007Command\030\003 \001(\0132\024.google.protob"
+      "uf.Any\"^\n\007Connect\022S\n\025ClientProtocolVersi"
+      "on\030\001 \001(\01624.Beam.Ftl.Ingest.Messages.Conn"
+      "ection.ProtocolVersion\"\276\001\n\020Connect_Respo"
+      "nse\022S\n\025ServerProtocolVersion\030\001 \001(\01624.Bea"
+      "m.Ftl.Ingest.Messages.Connection.Protoco"
+      "lVersion\022D\n\nStatusCode\030\002 \001(\01620.Beam.Ftl."
+      "Ingest.Messages.Connection.StatusCodes\022\017"
+      "\n\007HmacKey\030\003 \001(\t*!\n\017ProtocolVersion\022\006\n\002V0"
+      "\020\000\022\006\n\002V1\020\001*\262\002\n\013StatusCodes\022\013\n\007UNKNOWN\020\000\022"
+      "\007\n\002OK\020\310\001\022\t\n\004PING\020\311\001\022\020\n\013BAD_REQUEST\020\220\003\022\021\n"
+      "\014UNAUTHORIZED\020\221\003\022\020\n\013OLD_VERSION\020\222\003\022\031\n\024AU"
+      "DIO_SSRC_COLLISION\020\223\003\022\031\n\024VIDEO_SSRC_COLL"
+      "ISION\020\224\003\022\027\n\022INVALID_STREAM_KEY\020\225\003\022\023\n\016CHA"
+      "NNEL_IN_USE\020\226\003\022\027\n\022REGION_UNSUPPORTED\020\227\003\022"
+      "\025\n\020NO_MEDIA_TIMEOUT\020\230\003\022\032\n\025INTERNAL_SERVE"
+      "R_ERROR\020\364\003\022\033\n\026INTERNAL_COMMAND_ERROR\020\365\003*"
+      "0\n\013CommandType\022\013\n\007CONNECT\020\000\022\024\n\020CONNECT_R"
+      "ESPONSE\020\001b\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 433);
+      descriptor, 977);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "IngestConnection.proto", &protobuf_RegisterTypes);
+  ::google::protobuf::protobuf_google_2fprotobuf_2fany_2eproto::AddDescriptors();
   ::google::protobuf::internal::OnShutdown(&TableStruct::Shutdown);
 }
 
@@ -160,6 +192,32 @@ const ::google::protobuf::EnumDescriptor* StatusCodes_descriptor() {
 bool StatusCodes_IsValid(int value) {
   switch (value) {
     case 0:
+    case 200:
+    case 201:
+    case 400:
+    case 401:
+    case 402:
+    case 403:
+    case 404:
+    case 405:
+    case 406:
+    case 407:
+    case 408:
+    case 500:
+    case 501:
+      return true;
+    default:
+      return false;
+  }
+}
+
+const ::google::protobuf::EnumDescriptor* CommandType_descriptor() {
+  protobuf_IngestConnection_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_IngestConnection_2eproto::file_level_enum_descriptors[2];
+}
+bool CommandType_IsValid(int value) {
+  switch (value) {
+    case 0:
     case 1:
       return true;
     default:
@@ -167,6 +225,375 @@ bool StatusCodes_IsValid(int value) {
   }
 }
 
+
+// ===================================================================
+
+#if !defined(_MSC_VER) || _MSC_VER >= 1900
+const int IngestMessage::kStatusCodeFieldNumber;
+const int IngestMessage::kCommandTypeFieldNumber;
+const int IngestMessage::kCommandFieldNumber;
+#endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
+
+IngestMessage::IngestMessage()
+  : ::google::protobuf::Message(), _internal_metadata_(NULL) {
+  if (GOOGLE_PREDICT_TRUE(this != internal_default_instance())) {
+    protobuf_IngestConnection_2eproto::InitDefaults();
+  }
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+}
+IngestMessage::IngestMessage(const IngestMessage& from)
+  : ::google::protobuf::Message(),
+      _internal_metadata_(NULL),
+      _cached_size_(0) {
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_command()) {
+    command_ = new ::google::protobuf::Any(*from.command_);
+  } else {
+    command_ = NULL;
+  }
+  ::memcpy(&statuscode_, &from.statuscode_,
+    reinterpret_cast<char*>(&commandtype_) -
+    reinterpret_cast<char*>(&statuscode_) + sizeof(commandtype_));
+  // @@protoc_insertion_point(copy_constructor:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+}
+
+void IngestMessage::SharedCtor() {
+  ::memset(&command_, 0, reinterpret_cast<char*>(&commandtype_) -
+    reinterpret_cast<char*>(&command_) + sizeof(commandtype_));
+  _cached_size_ = 0;
+}
+
+IngestMessage::~IngestMessage() {
+  // @@protoc_insertion_point(destructor:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  SharedDtor();
+}
+
+void IngestMessage::SharedDtor() {
+  if (this != internal_default_instance()) {
+    delete command_;
+  }
+}
+
+void IngestMessage::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* IngestMessage::descriptor() {
+  protobuf_IngestConnection_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_IngestConnection_2eproto::file_level_metadata[0].descriptor;
+}
+
+const IngestMessage& IngestMessage::default_instance() {
+  protobuf_IngestConnection_2eproto::InitDefaults();
+  return *internal_default_instance();
+}
+
+IngestMessage* IngestMessage::New(::google::protobuf::Arena* arena) const {
+  IngestMessage* n = new IngestMessage;
+  if (arena != NULL) {
+    arena->Own(n);
+  }
+  return n;
+}
+
+void IngestMessage::Clear() {
+// @@protoc_insertion_point(message_clear_start:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  if (GetArenaNoVirtual() == NULL && command_ != NULL) {
+    delete command_;
+  }
+  command_ = NULL;
+  ::memset(&statuscode_, 0, reinterpret_cast<char*>(&commandtype_) -
+    reinterpret_cast<char*>(&statuscode_) + sizeof(commandtype_));
+}
+
+bool IngestMessage::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!GOOGLE_PREDICT_TRUE(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoffNoLastTag(127u);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // .Beam.Ftl.Ingest.Messages.Connection.StatusCodes StatusCode = 1;
+      case 1: {
+        if (tag == 8u) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_statuscode(static_cast< ::Beam::Ftl::Ingest::Messages::Connection::StatusCodes >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .Beam.Ftl.Ingest.Messages.Connection.CommandType CommandType = 2;
+      case 2: {
+        if (tag == 16u) {
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          set_commandtype(static_cast< ::Beam::Ftl::Ingest::Messages::Connection::CommandType >(value));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      // .google.protobuf.Any Command = 3;
+      case 3: {
+        if (tag == 26u) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_command()));
+        } else {
+          goto handle_unusual;
+        }
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormatLite::SkipField(input, tag));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  return false;
+#undef DO_
+}
+
+void IngestMessage::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  // .Beam.Ftl.Ingest.Messages.Connection.StatusCodes StatusCode = 1;
+  if (this->statuscode() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      1, this->statuscode(), output);
+  }
+
+  // .Beam.Ftl.Ingest.Messages.Connection.CommandType CommandType = 2;
+  if (this->commandtype() != 0) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      2, this->commandtype(), output);
+  }
+
+  // .google.protobuf.Any Command = 3;
+  if (this->has_command()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, *this->command_, output);
+  }
+
+  // @@protoc_insertion_point(serialize_end:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+}
+
+::google::protobuf::uint8* IngestMessage::InternalSerializeWithCachedSizesToArray(
+    bool deterministic, ::google::protobuf::uint8* target) const {
+  (void)deterministic;  // Unused
+  // @@protoc_insertion_point(serialize_to_array_start:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  // .Beam.Ftl.Ingest.Messages.Connection.StatusCodes StatusCode = 1;
+  if (this->statuscode() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      1, this->statuscode(), target);
+  }
+
+  // .Beam.Ftl.Ingest.Messages.Connection.CommandType CommandType = 2;
+  if (this->commandtype() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      2, this->commandtype(), target);
+  }
+
+  // .google.protobuf.Any Command = 3;
+  if (this->has_command()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      InternalWriteMessageNoVirtualToArray(
+        3, *this->command_, false, target);
+  }
+
+  // @@protoc_insertion_point(serialize_to_array_end:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  return target;
+}
+
+size_t IngestMessage::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  size_t total_size = 0;
+
+  // .google.protobuf.Any Command = 3;
+  if (this->has_command()) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        *this->command_);
+  }
+
+  // .Beam.Ftl.Ingest.Messages.Connection.StatusCodes StatusCode = 1;
+  if (this->statuscode() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->statuscode());
+  }
+
+  // .Beam.Ftl.Ingest.Messages.Connection.CommandType CommandType = 2;
+  if (this->commandtype() != 0) {
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::EnumSize(this->commandtype());
+  }
+
+  int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = cached_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void IngestMessage::MergeFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  GOOGLE_DCHECK_NE(&from, this);
+  const IngestMessage* source =
+      ::google::protobuf::internal::DynamicCastToGenerated<const IngestMessage>(
+          &from);
+  if (source == NULL) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+    MergeFrom(*source);
+  }
+}
+
+void IngestMessage::MergeFrom(const IngestMessage& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom(from._internal_metadata_);
+  if (from.has_command()) {
+    mutable_command()->::google::protobuf::Any::MergeFrom(from.command());
+  }
+  if (from.statuscode() != 0) {
+    set_statuscode(from.statuscode());
+  }
+  if (from.commandtype() != 0) {
+    set_commandtype(from.commandtype());
+  }
+}
+
+void IngestMessage::CopyFrom(const ::google::protobuf::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void IngestMessage::CopyFrom(const IngestMessage& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:Beam.Ftl.Ingest.Messages.Connection.IngestMessage)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool IngestMessage::IsInitialized() const {
+  return true;
+}
+
+void IngestMessage::Swap(IngestMessage* other) {
+  if (other == this) return;
+  InternalSwap(other);
+}
+void IngestMessage::InternalSwap(IngestMessage* other) {
+  std::swap(command_, other->command_);
+  std::swap(statuscode_, other->statuscode_);
+  std::swap(commandtype_, other->commandtype_);
+  std::swap(_cached_size_, other->_cached_size_);
+}
+
+::google::protobuf::Metadata IngestMessage::GetMetadata() const {
+  protobuf_IngestConnection_2eproto::protobuf_AssignDescriptorsOnce();
+  return protobuf_IngestConnection_2eproto::file_level_metadata[0];
+}
+
+#if PROTOBUF_INLINE_NOT_IN_HEADERS
+// IngestMessage
+
+// .Beam.Ftl.Ingest.Messages.Connection.StatusCodes StatusCode = 1;
+void IngestMessage::clear_statuscode() {
+  statuscode_ = 0;
+}
+::Beam::Ftl::Ingest::Messages::Connection::StatusCodes IngestMessage::statuscode() const {
+  // @@protoc_insertion_point(field_get:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.StatusCode)
+  return static_cast< ::Beam::Ftl::Ingest::Messages::Connection::StatusCodes >(statuscode_);
+}
+void IngestMessage::set_statuscode(::Beam::Ftl::Ingest::Messages::Connection::StatusCodes value) {
+  
+  statuscode_ = value;
+  // @@protoc_insertion_point(field_set:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.StatusCode)
+}
+
+// .Beam.Ftl.Ingest.Messages.Connection.CommandType CommandType = 2;
+void IngestMessage::clear_commandtype() {
+  commandtype_ = 0;
+}
+::Beam::Ftl::Ingest::Messages::Connection::CommandType IngestMessage::commandtype() const {
+  // @@protoc_insertion_point(field_get:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.CommandType)
+  return static_cast< ::Beam::Ftl::Ingest::Messages::Connection::CommandType >(commandtype_);
+}
+void IngestMessage::set_commandtype(::Beam::Ftl::Ingest::Messages::Connection::CommandType value) {
+  
+  commandtype_ = value;
+  // @@protoc_insertion_point(field_set:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.CommandType)
+}
+
+// .google.protobuf.Any Command = 3;
+bool IngestMessage::has_command() const {
+  return this != internal_default_instance() && command_ != NULL;
+}
+void IngestMessage::clear_command() {
+  if (GetArenaNoVirtual() == NULL && command_ != NULL) delete command_;
+  command_ = NULL;
+}
+const ::google::protobuf::Any& IngestMessage::command() const {
+  // @@protoc_insertion_point(field_get:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.Command)
+  return command_ != NULL ? *command_
+                         : *::google::protobuf::Any::internal_default_instance();
+}
+::google::protobuf::Any* IngestMessage::mutable_command() {
+  
+  if (command_ == NULL) {
+    command_ = new ::google::protobuf::Any;
+  }
+  // @@protoc_insertion_point(field_mutable:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.Command)
+  return command_;
+}
+::google::protobuf::Any* IngestMessage::release_command() {
+  // @@protoc_insertion_point(field_release:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.Command)
+  
+  ::google::protobuf::Any* temp = command_;
+  command_ = NULL;
+  return temp;
+}
+void IngestMessage::set_allocated_command(::google::protobuf::Any* command) {
+  delete command_;
+  command_ = command;
+  if (command) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_set_allocated:Beam.Ftl.Ingest.Messages.Connection.IngestMessage.Command)
+}
+
+#endif  // PROTOBUF_INLINE_NOT_IN_HEADERS
 
 // ===================================================================
 
@@ -211,7 +638,7 @@ void Connect::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* Connect::descriptor() {
   protobuf_IngestConnection_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_IngestConnection_2eproto::file_level_metadata[0].descriptor;
+  return protobuf_IngestConnection_2eproto::file_level_metadata[1].descriptor;
 }
 
 const Connect& Connect::default_instance() {
@@ -373,7 +800,7 @@ void Connect::InternalSwap(Connect* other) {
 
 ::google::protobuf::Metadata Connect::GetMetadata() const {
   protobuf_IngestConnection_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_IngestConnection_2eproto::file_level_metadata[0];
+  return protobuf_IngestConnection_2eproto::file_level_metadata[1];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
@@ -449,7 +876,7 @@ void Connect_Response::SetCachedSize(int size) const {
 }
 const ::google::protobuf::Descriptor* Connect_Response::descriptor() {
   protobuf_IngestConnection_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_IngestConnection_2eproto::file_level_metadata[1].descriptor;
+  return protobuf_IngestConnection_2eproto::file_level_metadata[2].descriptor;
 }
 
 const Connect_Response& Connect_Response::default_instance() {
@@ -697,7 +1124,7 @@ void Connect_Response::InternalSwap(Connect_Response* other) {
 
 ::google::protobuf::Metadata Connect_Response::GetMetadata() const {
   protobuf_IngestConnection_2eproto::protobuf_AssignDescriptorsOnce();
-  return protobuf_IngestConnection_2eproto::file_level_metadata[1];
+  return protobuf_IngestConnection_2eproto::file_level_metadata[2];
 }
 
 #if PROTOBUF_INLINE_NOT_IN_HEADERS
